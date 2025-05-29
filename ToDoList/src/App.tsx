@@ -49,7 +49,7 @@ function App() {
   const completedTasks = tasks.filter((task) => task.completed);
 
   return (
-    <div className="">
+    <div className="app-container">
       <div className="todo-list-card">
         <div className="todo-list-header">
           <span className="icon">✔</span>
