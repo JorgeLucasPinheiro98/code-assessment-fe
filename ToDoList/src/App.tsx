@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { Task } from './types';
 import TaskList from './componentes/TaskList';
 import './App.css';
-//import { v4 as uuidv4 } from 'uuid'; // Para gerar IDs únicos
+import { v4 as uuidv4 } from 'uuid'; // Para gerar IDs únicos
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>(() => {
@@ -20,7 +20,7 @@ function App() {
   const handleAddTask = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && newTaskText.trim() !== '') {
       const newTodo: Task = {
-        id: 1,
+        id: uuidv4(),
         text: newTaskText.trim(),
         completed: false,
       };
@@ -49,7 +49,7 @@ function App() {
   const completedTasks = tasks.filter((task) => task.completed);
 
   return (
-    <div className="app-container">
+    <div className="">
       <div className="todo-list-card">
         <div className="todo-list-header">
           <span className="icon">✔</span>
@@ -59,7 +59,7 @@ function App() {
         <div className="add-task-section">
           <input
             type="text"
-            placeholder="Adicione uma tarefa a lista. Pressione Enter para salvar."
+            placeholder="Adicione uma tarefa a lista."
             value={newTaskText}
             onChange={(e) => setNewTaskText(e.target.value)}
             onKeyDown={handleAddTask}
